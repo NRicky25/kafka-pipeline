@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Properties;
 
 public class ConsumerApp {
-    // Event shape produced by ProducerApp
     record Txn(String id, String ts, String customer_id, int amount_cents, String category) {}
 
     public static void main(String[] args) throws Exception {
@@ -26,10 +25,8 @@ public class ConsumerApp {
 
         String bootstrap = cfg.getProperty("kafka.bootstrap");
         String topic = cfg.getProperty("kafka.topic");
-
         // DB pool
         HikariDataSource ds = makeDataSource(cfg);
-
         // Kafka consumer config
         Properties c = new Properties();
         c.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrap);

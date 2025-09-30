@@ -11,8 +11,6 @@ import java.util.Random;
 import java.util.UUID;
 
 public class ProducerApp {
-
-    // id is a UUID now (not String)
     record Txn(UUID id, String ts, String customer_id, int amount_cents, String category) {}
 
     public static void main(String[] args) throws Exception {
@@ -36,8 +34,8 @@ public class ProducerApp {
 
             for (int i = 0; i < 200; i++) {
                 Txn evt = new Txn(
-                        UUID.randomUUID(),                // keep as UUID
-                        Instant.now().toString(),        // ISO-8601 string
+                        UUID.randomUUID(),                
+                        Instant.now().toString(),        
                         customers[r.nextInt(customers.length)],
                         500 + r.nextInt(5000),
                         cats[r.nextInt(cats.length)]

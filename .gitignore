@@ -24,3 +24,10 @@ Thumbs.db
 *.pid
 *.seed
 docker-data/
+
+#.env
+app.properties
+.env
+
+#sql
+init.sql
