@@ -10,7 +10,7 @@ plugins {
     java
 }
 
-group = "com.ricky"
+group = "com.stream"
 version = "0.1.0"
 
 java {
@@ -44,7 +44,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.ricky.pipeline.ProducerApp")
+    mainClass.set("com.stream.pipeline.ProducerApp")
 }
 
 tasks.test {
@@ -55,12 +55,19 @@ tasks.register<JavaExec>("runProducer") {
     group = "app"
     description = "Run Kafka producer"
     classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.ricky.pipeline.ProducerApp")
+    mainClass.set("com.stream.pipeline.ProducerApp")
 }
 
 tasks.register<JavaExec>("runConsumer") {
     group = "app"
     description = "Run Kafka consumer"
     classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.ricky.pipeline.ConsumerApp")
+    mainClass.set("com.stream.pipeline.ConsumerApp")
+}
+
+tasks.register<JavaExec>("runDbPing") {
+    group = "app"
+    description = "Test direct JDBC connection without Hikari"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.stream.pipeline.tools.DbPing")
 }
